@@ -1,0 +1,76 @@
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    height: 100vh;
+}
+.form-container {
+    width: 40%;
+    padding: 20px;
+    border-radius: 10px;
+}
+h1, h2 {
+    color: white;
+    font-family: 'Georgia', serif;
+    text-align: center;
+}
+h1 {
+    margin-bottom: 0;
+}
+h2 {
+    margin-top: 0;
+}
+table {
+    background-color: rgba(0, 0, 0, 0.7); /* Black background with opacity */
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 15px; /* Rounded corners for the table */
+    overflow: hidden; /* Ensure the corners are rounded */
+}
+td {
+    padding: 5px 10px;
+}
+input, select {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0;
+    box-sizing: border-box;
+}
+label {
+    color: white; 
+    font-size: 1.2em; 
+}
+button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 15px;
+}
+button:hover {
+    background-color: #45a049;
+}
+#result {
+    margin-top: 20px;
+}
+.slideshow-container {
+    width: 50%;
+    max-width: 600px;
+    position: relative;
+    margin: auto;
+}
+.mySlides {
+    display: none;
+}
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+@keyframes fade {
+    from {opacity: .4} 
+    to {opacity: 1}
+}

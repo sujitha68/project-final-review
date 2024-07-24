@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Southern Agronomy - Yield Prediction</title>
+    <link rel="stylesheet" href="static/css/styles.css">
+    <style>
+        body {
+    background: url('static/images/background.jpeg') no-repeat center center fixed;
+    background-size: cover;
+    font-family: Arial, sans-serif;
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <h1>Southern Agronomy</h1>
+            <h2>Yield Prediction</h2>
+            <form id="predictionForm" method="POST" action="/predict">
+                <table>
+                    <tr>
+                        <td><label for="Crop">Crop</label></td>
+                        <td><select id="Crop" name="Crop"></select></td>
+                    </tr>
+                    <tr>
+                        <td><label for="Crop_Year">Year</label></td>
+                        <td>
+                            <select id="Crop_Year" name="Crop_Year"></select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="Season">Season</label></td>
+                        <td>
+                            <select id="Season" name="Season">
+                                <option value="Autumn">Autumn</option>
+                                <option value="Kharif">Kharif</option>
+                                <option value="Rabi">Rabi</option>
+                                <option value="Summer">Summer</option>
+                                <option value="Winter">Winter</option>
+                                <option value="Whole Year">Whole Year</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="State">State</label></td>
+                        <td>
+                            <select id="State" name="State">
+                                <option value="Andhra Pradesh">Andhra Pradesh</option>
+                                <option value="Karnataka">Karnataka</option>
+                                <option value="Kerala">Kerala</option>
+                                <option value="Tamil Nadu">Tamil Nadu</option>
+                                <option value="Telangana">Telangana</option>
+                                <option value="Puducherry">Puducherry</option>
+                            </select>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td><label for="Area">Area (hectares)</label></td>
+                        <td><input type="text" id="Area" name="Area"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="Production">Production (Tons)</label></td>
+                        <td><input type="text" id="Production" name="Production"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="Annual_Rainfall">Rainfall (mm)</label></td>
+                        <td><input type="text" id="Annual_Rainfall" name="Annual_Rainfall"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="Fertilizer">Fertilizer (kg)</label></td>
+                        <td><input type="text" id="Fertilizer" name="Fertilizer"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="Pesticide">Pesticide (kg)</label></td>
+                        <td><input type="text" id="Pesticide" name="Pesticide"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><button type="submit">Predict Yield</button></td>
+                    </tr>
+                </table>
+            </form>
+            <div id="result"></div>
+        </div>
+        <div class="slideshow-container">
+            <div class="mySlides fade">
+                <img src="static/images/1.jpeg" style="width:100%">
+            </div>
+            <div class="mySlides fade">
+                <img src="static/images/2.jpeg" style="width:100%">
+            </div>
+            <div class="mySlides fade">
+                <img src="static/images/3.png" style="width:100%">
+            </div>
+            <div class="mySlides fade">
+                <img src="static/images/4.jpeg" style="width:100%">
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const crops = [
+                "Arecanut", "Arhar/Tur", "Bajra", "Black pepper", "Cardamom",
+                "Coriander", "Dry chillies", "Garlic", "Ginger", "Groundnut",
+                "Horse-gram", "Jowar", "Maize", "Ragi", "Rice", "Sugarcane",
+                "Turmeric", "Wheat", "Cashewnut", "Coconut", "Tapioca",
+                "Cotton(lint)", "Onion", "Sesamum", "Small millets", "Castor seed",
+                "Gram", "Linseed", "Moong(Green Gram)", "Niger seed",
+                "Peas & beans (Pulses)", "Potato", "Rapeseed & Mustard",
+                "Safflower", "Sunflower", "Banana", "Sweet potato", "Tobacco",
+                "Other Rabi pulses", "Urad", "Mesta", "Other Kharif pulses",
+                "Sannhamp", "Soyabean", "other oilseeds", "Other Cereals",
+                "Cowpea(Lobia)", "Jute", "Masoor", "Oilseeds total", "Guar seed",
+                "Other Summer Pulses"
+            ];
+
+            const cropSelect = document.getElementById('Crop');
+            crops.forEach(crop => {
+                const option = document.createElement('option');
+                option.value = crop;
+                option.text = crop;
+                cropSelect.add(option);
+            });
+            const yearSelect = document.getElementById('Crop_Year');
+            for (let year = 1997; year <= 2050; year++) {
+                const option = document.createElement('option');
+                option.value = year;
+                option.text = year;
+                yearSelect.add(option);
+            }
+        });
+
+        let slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+            let slides = document.getElementsByClassName("mySlides");
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {slideIndex = 1}    
+            slides[slideIndex-1].style.display = "block";  
+            setTimeout(showSlides, 2000); // Change image every 2 seconds
+        }
+
+    </script>
+</body>
+</html>
